@@ -25,6 +25,10 @@ export default function Home() {
     }
     if (sending) return;
     const userMessage = checked.message;
+    if (typeof userMessage !== "string") {
+      setStatus({ text: "Le message n’est pas valide. Réessaie.", kind: "error" });
+      return;
+    }
     const reply = getAssistantReply();
     setSending(true);
     setInput("");
